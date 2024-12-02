@@ -6,16 +6,18 @@ def line_safe(list:list) -> bool:
         print('Direction is valid! Continuing')
 
         for item in range(len(list)):
+
+            # Item 0 has no preceding
+            
             if item == 0:
                 continue
             else:
                 current = int(list[item])
                 preceding = int(list[item-1])
             
+            # Checking if difference from current to preceding is within allowed range.
             
             if not 1 <= abs(current - preceding) <= 3:
-                #print('Difference too high')
-                #print(current, preceding)
                 return False
         
         return True
