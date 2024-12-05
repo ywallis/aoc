@@ -12,8 +12,7 @@ def find_matches(matrix, x, y, word):
     
     return neighbors
 
-
-# Find X
+tes = tes
 
 # Find neighbors
 
