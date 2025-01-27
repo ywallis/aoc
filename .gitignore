@@ -1,1 +1,4 @@
-1/rust/
+# Rust-specific ignores
+**/target/
+**/*.rs.bk
+**/Cargo.lock
