@@ -1,6 +1,8 @@
-use std::time::Instant;
+use std::env;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
+use std::path::PathBuf;
+use std::time::Instant;
 
 fn read_lines(filename: &str) -> (Vec<i32>, Vec<i32>) {
     // This function reads from a text file and returns two vectors of ints
@@ -58,7 +60,13 @@ fn calculate_similarity(vec_a: &Vec<i32>, vec_b: &Vec<i32>) -> i32 {
 fn main() {
     // THIS ONLY WORKS IF RUNNING CARGO FROM THE LOCATION OF THE SRC
 
-    let (mut a, mut b): (Vec<i32>, Vec<i32>) = read_lines("../resources/input.txt");
+    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
+    let input_path = PathBuf::from(manifest_dir)
+        .join("..") // Go up to the rust directory
+        .join("..") // Go up to the project root
+        .join("inputs")
+        .join("1_input.txt"); // ACTUAL FILE NAME!
+    let (mut a, mut b): (Vec<i32>, Vec<i32>) = read_lines(input_path.to_str().unwrap());
     // println!("{:?}", a);
     // println!("{:?}", b);
     let start = Instant::now();
