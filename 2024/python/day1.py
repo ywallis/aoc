@@ -3,10 +3,9 @@ import time
 list_a: list[int] = []
 list_b: list[int] = []
 
-with open("input.txt", "r") as file:
+with open("../inputs/1_input.txt", "r") as file:
     lines = file.readlines()
     for line in lines:
-        # print(line.strip().split())
         line_clean = line.strip().split()
         list_a.append(int(line_clean[0]))
         list_b.append(int(line_clean[1]))
