@@ -27,11 +27,29 @@ def find_highest_combo(line: int) -> int:
     return int(str(highest_first_digit) + str(highest_second_digit))
 
 
+def part_2(line: int) -> int:
+    str_rep = str(line)
+
+    joltage = ""
+    beginning = 0
+    for i in reversed(range(12)):
+        if i == 0:
+            val = max(str_rep[beginning:])
+        else:
+            val = max(str_rep[beginning:-i])
+        joltage += val
+        idx = str_rep.find(val, beginning)
+        beginning = idx + 1
+    return int(joltage)
+
+
 def main():
     lines = load_example("03", False)
     total = 0
     for line in lines:
-        total += find_highest_combo(line)
+        # total += find_highest_combo(line)
+
+        total += part_2(line)
 
     print(total)
 
